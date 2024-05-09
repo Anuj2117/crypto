@@ -10,6 +10,27 @@ window.addEventListener("load", async () => {
 
   
   showTrendingCoins(response.coins, exchangeRate.bitcoin.inr);
+
+  const coinsWrapper = document.querySelector(".coins-wrapper");
+
+  
+  const scrollDuration = 10000; 
+  const scrollInterval = 20;
+  const scrollIncrement = 1; 
+
+ 
+  function scrollCoinsWrapper() {
+  
+    if (coinsWrapper.scrollLeft >= coinsWrapper.scrollWidth - coinsWrapper.clientWidth) {
+      coinsWrapper.scrollLeft = 0; 
+    } else {
+      coinsWrapper.scrollLeft += scrollIncrement; 
+    }
+  }
+
+
+  setInterval(scrollCoinsWrapper, scrollInterval);
+
 });
 
 function showTrendingCoins(data, exchangeRate) {
