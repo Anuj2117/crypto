@@ -70,3 +70,11 @@ async function getDataFromAPI(url) {
   const result = await response.json();
   return result;
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+    const heading = document.querySelector('h1');
+    heading.querySelectorAll('span').forEach((span, index) => {
+      span.style.setProperty('--index', index);
+    });
+  });
+  
