@@ -12,13 +12,13 @@ window.addEventListener("load", async () => {
     "https://api.coingecko.com/api/v3/search/trending"
   );
 
-  // Show trending coins with fetched data
+  
   showTrendingCoins(response.coins, exchangeRate.bitcoin.inr);
 
-  // Start scrolling animation for coins wrapper
+ 
   startScrollingAnimation();
 
-  // Add click event listener to "View All Coins" link
+  
   addViewAllCoinsClickListener();
 });
 
@@ -84,3 +84,10 @@ function addViewAllCoinsClickListener() {
     topCoinsSection.scrollIntoView({ behavior: 'smooth' });
   });
 }
+window.addEventListener('DOMContentLoaded', () => {
+    const heading = document.querySelector('h1');
+    heading.querySelectorAll('span').forEach((span, index) => {
+      span.style.setProperty('--index', index);
+    });
+  });
+  
