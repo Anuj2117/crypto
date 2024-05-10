@@ -54,29 +54,7 @@ function showChart(data) {
 
   data.forEach((dt) => {
     const date_obj = new Date(dt[0]);
-    // console.log(date_obj);
-
-    // const colorArr = [];
-    // for (let i = 1; i < prices.length; i++) {
-    //   const priceDifference = prices[i] - prices[i - 1];
-    //   const color = priceDifference >= 0 ? "blue" : "red";
-    //   colorArr.push(color);
-    // }
-    // var mychart = new Chart("cryptoChart", {
-    //   type: "line",
-    //   data: {
-    //     labels: timestamps,
-    //     datasets: [
-    //       {
-    //         label: "My First Dataset",
-    //         data: prices,
-    //         fill: false,
-    //         borderColor: colorArr,
-    //       },
-    //     ],
-    //   },
-    // });
-
+    
     let hours = date_obj.getHours();
     if (hours < 10) {
       hours = "0" + hours;
@@ -89,6 +67,7 @@ function showChart(data) {
     timesstamps.push(`${hours}:${minutes}`);
     priceInINR.push(dt[1]);
   });
+  
   // console.log(timesstamps, priceInINR)
 
   const colorArr = [];

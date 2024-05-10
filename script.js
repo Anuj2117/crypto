@@ -1,6 +1,10 @@
+// Define coinsWrapper variable at the top
+
+
 const coinsWrapper = document.querySelector(".coins-wrapper");
 
 window.addEventListener("load", async () => {
+  // Fetch data from API endpoints
   const exchangeRate = await getDataFromAPI(
     "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=inr"
   );
@@ -8,29 +12,14 @@ window.addEventListener("load", async () => {
     "https://api.coingecko.com/api/v3/search/trending"
   );
 
-  
+  // Show trending coins with fetched data
   showTrendingCoins(response.coins, exchangeRate.bitcoin.inr);
 
-  const coinsWrapper = document.querySelector(".coins-wrapper");
+  // Start scrolling animation for coins wrapper
+  startScrollingAnimation();
 
-  
-  const scrollDuration = 10000; 
-  const scrollInterval = 20;
-  const scrollIncrement = 1; 
-
- 
-  function scrollCoinsWrapper() {
-  
-    if (coinsWrapper.scrollLeft >= coinsWrapper.scrollWidth - coinsWrapper.clientWidth) {
-      coinsWrapper.scrollLeft = 0; 
-    } else {
-      coinsWrapper.scrollLeft += scrollIncrement; 
-    }
-  }
-
-
-  setInterval(scrollCoinsWrapper, scrollInterval);
-
+  // Add click event listener to "View All Coins" link
+  addViewAllCoinsClickListener();
 });
 
 function showTrendingCoins(data, exchangeRate) {
@@ -71,10 +60,27 @@ async function getDataFromAPI(url) {
   return result;
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-    const heading = document.querySelector('h1');
-    heading.querySelectorAll('span').forEach((span, index) => {
-      span.style.setProperty('--index', index);
-    });
+function startScrollingAnimation() {
+  const scrollInterval = 20;
+  const scrollIncrement = 1;
+
+  function scrollCoinsWrapper() {
+    if (coinsWrapper.scrollLeft >= coinsWrapper.scrollWidth - coinsWrapper.clientWidth) {
+      coinsWrapper.scrollLeft = 0;
+    } else {
+      coinsWrapper.scrollLeft += scrollIncrement;
+    }
+  }
+
+  setInterval(scrollCoinsWrapper, scrollInterval);
+}
+
+function addViewAllCoinsClickListener() {
+  var viewAllCoinsLink = document.querySelector('a[href="#top-coins"]');
+  var topCoinsSection = document.getElementById('top-coins');
+
+  viewAllCoinsLink.addEventListener('click', function(event) {
+    event.preventDefault();
+    topCoinsSection.scrollIntoView({ behavior: 'smooth' });
   });
-  
+}

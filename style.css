@@ -11,8 +11,10 @@
     scroll-behavior: smooth;
   }
   
+  
   h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
+    /* color: white; */
   }
   
   a {
@@ -23,6 +25,7 @@
   ul {
     list-style: none;
   }
+ 
   
   /* Header styles */
   header {
@@ -35,6 +38,8 @@
   header img {
     width: 120px;
   }
+
+ 
   
   /* Button styles */
   .btn {
@@ -43,12 +48,14 @@
     border-radius: 5px;
     background-color: #e93d3f;
     color: #fff;
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5);
     transition: all 300ms ease;
   }
   
   .btn:hover {
     background-color: transparent;
     color: #e93d3f;
+    box-shadow: none;
   }
   
   /* Main content styles */
@@ -57,18 +64,29 @@
   }
   
   /* Hero section styles */
+ 
+  @keyframes slideInFromRight {
+    from {
+      background-position: 100% 50%;
+    }
+    to {
+      background-position: 90% 50%;
+    }
+  }
+  
   #hero {
     background-image: url(main_image.svg);
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: 90%;
     min-height: 60vh;
     padding: 2rem 0;
     display: flex;
-    /* Apply fade-in animation to hero section */
+    z-index: 99;
     opacity: 0;
-    animation: fadeIn ease-in-out 0.5s forwards;
+    animation: fadeIn ease-in-out 0.5s forwards, slideInFromRight ease-in-out 1.4s forwards;
   }
+  
+  
   h1 span {
     font-weight: 700;
     display: inline-block;
@@ -96,12 +114,25 @@
   #hero a {
     margin-top: 2rem;
   }
+  .background {
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    url(very\ new.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -99;
+  }
   
   /* Top coins section styles */
   .topcoins {
     font-size: 30px;
     margin-bottom: 20px;
-    background-color: #e93d3f;
+    background-color: #da2a2d;
     color: white;
     width: 300px;
     margin-left: 18em;
@@ -163,6 +194,15 @@
   }
   
   /* Single page styles */
+  .background-details{
+    background:linear-gradient(rgb(250, 208, 215) ,rgb(176, 176, 246));
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -99;
+  }
   .single-crypto-details {
     display: flex;
     justify-content: space-between;
@@ -228,7 +268,7 @@
     align-items: center;
     padding: 0.9rem;
     border-radius: 6px;
-    background-color: #fff;
+    background-color: #e2e2e2;
     box-shadow: 2px 2px 4px 3px rgba(0, 0, 0, 0.5);
     margin-bottom: 1rem;
   }
@@ -250,8 +290,8 @@
   }
   
   .result .right .btn {
-    padding-left: 2px;
-    padding-right: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
   
   /* Additional animations */
